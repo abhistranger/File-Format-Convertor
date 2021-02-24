@@ -1,6 +1,6 @@
 exception EmptyInputFile;
 exception LineError of string;
-fun cD(infilename: string, delim1: char,outfilename: string,delim2: char) =
+fun convertDelimiters(infilename: string, delim1: char,outfilename: string,delim2: char) =
     let
         val instream = TextIO.openIn infilename
         val outstream = TextIO.openOut outfilename
@@ -48,13 +48,13 @@ fun csv2tsv(infilename: string, outfilename: string) =
   		val delim1 = #","
   		val delim2 = #"\t"
   	in
-  		cD(infilename,delim1,outfilename,delim2)
+  		convertDelimiters(infilename,delim1,outfilename,delim2)
   	end
 fun tsv2csv(infilename: string, outfilename: string) =
   	let
   		val delim1 = #"\t"
   		val delim2 = #","
   	in
-  		cD(infilename,delim1,outfilename,delim2)
+  		convertDelimiters(infilename,delim1,outfilename,delim2)
   	end
 
